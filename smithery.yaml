@@ -1,0 +1,88 @@
+# Smithery Registry — Hive Agent Storage MCP Server
+
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    properties:
+      did:
+        type: string
+        title: "Agent DID"
+        x-order: 0
+      api_key:
+        type: string
+        title: "API Key"
+        x-sensitive: true
+        x-order: 1
+      default_retention:
+        type: string
+        title: "Default Retention Class"
+        enum:
+          - hot
+          - warm
+          - cold
+        default: hot
+        x-order: 2
+    required: []
+  url: https://hive-mcp-agent-storage.onrender.com/mcp
+
+name: hive-mcp-agent-storage
+displayName: Hive Agent Storage — Agent-Native Object Storage
+version: "1.0.0"
+description: >
+  Agent-native object storage MCP server with per-agent DID isolation and
+  x402 pay-per-byte metering. Routes to Storj, Filecoin, and Arweave under
+  the hood. Real Base USDC settlement to the canonical Hive recipient.
+  No mocks, no testnet, no dev-trust. Backend pending — registry manifest
+  ships as a discovery anchor.
+
+author:
+  name: Steve Rotzin
+  email: steve@thehiveryiq.com
+  url: https://www.thehiveryiq.com
+
+license: MIT
+homepage: https://hive-mcp-agent-storage.onrender.com
+repository:
+  type: git
+  url: https://github.com/srotzin/hive-mcp-agent-storage
+
+transport: streamable-http
+endpoint: https://hive-mcp-agent-storage.onrender.com/mcp
+protocol: "2024-11-05"
+
+categories:
+  - storage
+  - object-storage
+  - agent-to-agent
+  - decentralized-storage
+  - web3
+  - infrastructure
+
+tags:
+  - mcp
+  - hive
+  - hive-civilization
+  - x402
+  - a2a
+  - agent-storage
+  - object-storage
+  - storj
+  - filecoin
+  - arweave
+  - did-isolation
+  - usdc
+  - base-l2
+  - real-rails
+
+runtime:
+  type: node
+  version: ">=18"
+  command: node server.js
+  env:
+    - name: PORT
+      default: "3000"
+      required: false
+    - name: HIVE_BACKEND_URL
+      default: "https://hivemorph.onrender.com"
+      required: false

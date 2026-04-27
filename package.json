@@ -1,0 +1,49 @@
+{
+  "name": "hive-mcp-agent-storage",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "x402",
+    "a2a",
+    "agentic",
+    "ai-agent",
+    "ai-agents",
+    "autonomous-agent",
+    "llm",
+    "hive",
+    "hive-civilization",
+    "agent-storage",
+    "object-storage",
+    "agent-data",
+    "decentralized-storage",
+    "storj-compatible",
+    "filecoin-compatible",
+    "arweave-compatible",
+    "did-isolation",
+    "usdc",
+    "base",
+    "base-l2",
+    "real-rails",
+    "agent-card",
+    "oac",
+    "open-agent-card"
+  ],
+  "description": "MCP server for Hive Agent Storage — agent-native object storage with per-agent DID isolation and x402 pay-per-byte metering. Routes to Storj, Filecoin, and Arweave under the hood. Real Base USDC settlement.",
+  "homepage": "https://hive-mcp-agent-storage.onrender.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srotzin/hive-mcp-agent-storage"
+  },
+  "author": "Steve Rotzin <steve@thehiveryiq.com> (https://www.thehiveryiq.com)",
+  "license": "MIT"
+}
