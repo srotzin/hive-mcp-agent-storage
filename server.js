@@ -454,6 +454,191 @@ app.use((req, res) => {
   });
 });
 
+
+// ─── Schema discoverability routes ────────────────────────────────────────
+app.get('/.well-known/agent-card.json', (req, res) => {
+  res.json({
+  "name": "hive-mcp-agent-storage",
+  "description": "MCP server for Hive Agent Storage \u2014 agent-native object storage with per-agent DID isolation and x402 pay-per-byte metering. Routes to Storj, Filecoin, and Arweave under the hood. Real Base USDC settlement.",
+  "url": "https://hive-mcp-agent-storage.onrender.com",
+  "provider": {
+    "organization": "Hive Civilization",
+    "url": "https://www.thehiveryiq.com",
+    "contact": "steve@thehiveryiq.com"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "authentication": {
+    "schemes": [
+      "x402"
+    ],
+    "credentials": {
+      "type": "x402",
+      "asset": "USDC",
+      "network": "base",
+      "asset_address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "recipient": "0x15184bf50b3d3f52b60434f8942b7d52f2eb436e"
+    }
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": []
+});
+});
+
+app.get('/.well-known/ap2.json', (req, res) => {
+  res.json({
+  "ap2_version": "1",
+  "agent": {
+    "name": "hive-mcp-agent-storage",
+    "did": "did:web:hive-mcp-agent-storage.onrender.com",
+    "description": "MCP server for Hive Agent Storage \u2014 agent-native object storage with per-agent DID isolation and x402 pay-per-byte metering. Routes to Storj, Filecoin, and Arweave under the hood. Real Base USDC settlement."
+  },
+  "endpoints": {
+    "mcp": "https://hive-mcp-agent-storage.onrender.com/mcp",
+    "agent_card": "https://hive-mcp-agent-storage.onrender.com/.well-known/agent-card.json"
+  },
+  "payments": {
+    "schemes": [
+      "x402"
+    ],
+    "primary": {
+      "scheme": "x402",
+      "network": "base",
+      "asset": "USDC",
+      "asset_address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "recipient": "0x15184bf50b3d3f52b60434f8942b7d52f2eb436e"
+    }
+  },
+  "brand": {
+    "color": "#C08D23",
+    "name": "Hive Civilization"
+  }
+});
+});
+
+app.get('/openapi.json', (req, res) => {
+  res.json({
+  "openapi": "3.0.3",
+  "info": {
+    "title": "hive-mcp-agent-storage",
+    "version": "1.0.0",
+    "description": "MCP server for Hive Agent Storage \u2014 agent-native object storage with per-agent DID isolation and x402 pay-per-byte metering. Routes to Storj, Filecoin, and Arweave under the hood. Real Base USDC settlement.",
+    "contact": {
+      "email": "steve@thehiveryiq.com"
+    },
+    "x-brand-color": "#C08D23",
+    "x-organization": "Hive Civilization"
+  },
+  "servers": [
+    {
+      "url": "https://hive-mcp-agent-storage.onrender.com"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "GET /health",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "summary": "POST /mcp",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "GET /",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/og.svg": {
+      "get": {
+        "summary": "GET /og.svg",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/robots.txt": {
+      "get": {
+        "summary": "GET /robots.txt",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sitemap.xml": {
+      "get": {
+        "summary": "GET /sitemap.xml",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/seo.json": {
+      "get": {
+        "summary": "GET /seo.json",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/agent.json": {
+      "get": {
+        "summary": "GET /agent.json",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/agent.html": {
+      "get": {
+        "summary": "GET /agent.html",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+});
+});
+
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`[hive-mcp-agent-storage] Running on port ${PORT}`);
   console.log(`[hive-mcp-agent-storage] MCP endpoint: http://localhost:${PORT}/mcp`);
