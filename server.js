@@ -445,16 +445,6 @@ app.get('/agent.json', (req, res) => res.json(buildAgentCard(HIVE_AGENT_CFG)));
 app.get('/.well-known/oac.json', (req, res) => res.json(buildOacJsonLd(HIVE_AGENT_CFG)));
 app.get('/agent.html', (req, res) => res.type('text/html; charset=utf-8').send(renderRootHtml(HIVE_AGENT_CFG)));
 
-app.use((req, res) => {
-  res.status(404).json({
-    status: 'error',
-    error: 'NOT_FOUND',
-    detail: `Route ${req.method} ${req.path} not found`,
-    available: ['GET /health', 'POST /mcp', 'GET /.well-known/mcp.json', 'GET /.well-known/agent.json', 'GET /'],
-  });
-});
-
-
 // ─── Schema constants (auto-injected to fix deploy) ─────
 const SERVICE = 'hive-mcp-agent-storage';
 const VERSION = '1.0.0';
@@ -528,6 +518,16 @@ const AP2 = {
 
 app.get('/.well-known/agent-card.json', (req, res) => res.json(AGENT_CARD));
 app.get('/.well-known/ap2.json',         (req, res) => res.json(AP2));
+
+app.use((req, res) => {
+  res.status(404).json({
+    status: 'error',
+    error: 'NOT_FOUND',
+    detail: `Route ${req.method} ${req.path} not found`,
+    available: ['GET /health', 'POST /mcp', 'GET /.well-known/mcp.json', 'GET /.well-known/agent.json', 'GET /'],
+  });
+});
+
 
 
 app.listen(PORT, '0.0.0.0', () => {
