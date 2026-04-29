@@ -455,6 +455,12 @@ app.use((req, res) => {
 });
 
 
+// ─── Schema constants (auto-injected to fix deploy) ─────
+const SERVICE = 'hive-mcp-agent-storage';
+const VERSION = '1.0.0';
+const TOOLS = (typeof globalThis.__HIVE_TOOLS__ !== 'undefined') ? globalThis.__HIVE_TOOLS__ : [];
+
+
 // ─── Schema discoverability ────────────────────────────────────────────────
 const AGENT_CARD = {
   name: SERVICE,
