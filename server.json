@@ -1,18 +1,29 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.srotzin/hive-mcp-agent-storage",
+  "description": "Agent-native object storage MCP server",
   "title": "Hive Agent Storage",
-  "description": "Encrypted A2A object storage for autonomous agent state and artifacts",
-  "version": "1.0.0",
-  "websiteUrl": "https://www.hiveagentiq.com",
-  "remotes": [
-    {
-      "url": "https://hive-mcp-agent-storage.onrender.com/mcp",
-      "type": "streamable-http"
-    }
-  ],
+  "websiteUrl": "https://thehiveryiq.com",
   "repository": {
     "url": "https://github.com/srotzin/hive-mcp-agent-storage",
     "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://hive-mcp-gateway.onrender.com/agent-storage/mcp"
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "tool": "hive-release-tool",
+      "version": "1.0.0",
+      "build_info": {
+        "stack": "hive-civilization",
+        "settlement": "USDC on Base",
+        "license": "MIT"
+      }
+    }
   }
 }
